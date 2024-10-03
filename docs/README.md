@@ -1,21 +1,102 @@
+# Calculator Documentation
 
-# How to use calculator:
-1. Run `python calculate.py`
-2. Enter the figure name. Available are Circle, Square.
-3. Enter the function: Area or Perimeter.
-4. Enter figure sizes. Radius for circle, one side for square.
-5. Get the answer!
+## Общее описание решения
+Этот проект предоставляет утилиту для расчета площади и периметра различных геометрических фигур. Пользователь может выбрать фигуру (круг, квадрат, треугольник), указать необходимые размеры (радиус или стороны), а затем получить рассчитанную площадь или периметр.
 
-# Math formulas
-## Area
-- Circle: `S = πR²`
-- Rectangle: `S = ab`
-- Square: `S = a²`
-- Triangle: `S = sqrt(p * (p-a) * (p-b) * (p-c))` where p is semiperimeter
+### Как использовать калькулятор:
+1. Запустите файл calculate.py.
+2. Введите название фигуры. Доступные фигуры: Circle (Круг), Square (Квадрат), Triangle (Треугольник).
+3. Введите функцию для расчета: Area (Площадь) или Perimeter (Периметр).
+4. Введите размеры фигуры:
+- Радиус для круга.
+- Одну сторону для квадрата.
+- Три стороны для треугольника.
+5. Получите результат расчета.
 
-## Perimeter
-- Circle: `P = 2πR`
-- Rectangle: `P = 2a + 2b`
-- Square: `P = 4a`
-- Triangle: `P = a + b + c`
+Пример:
+```bash
+$ python calculate.py
+Enter figure name, available are ['circle', 'square', 'triangle']:
+circle
+Enter function name, available are ['perimeter', 'area']:
+area
+Input figure sizes separated by space:
+10
+Area of circle is 314.1592653589793
 
+Описание функций с примерами вызова
+area_circle(R)
+Функция для вычисления площади круга.
+
+Параметры:
+R (int, float): Радиус круга.
+Возвращает:
+float: Площадь круга.
+Пример использования:
+
+»> area_circle(5)
+78.53981633974483
+perimeter_circle(R)
+Функция для вычисления периметра круга.
+
+Параметры:
+R (int, float): Радиус круга.
+Возвращает:
+
+float: Периметр круга.
+Пример использования:
+
+»> perimeter_circle(5)
+31.41592653589793
+area_square(a)
+Функция для вычисления площади квадрата.
+
+Параметры:
+a (int, float): Длина стороны квадрата.
+Возвращает:
+
+float: Площадь квадрата.
+Пример использования:
+
+»> area_square(4)
+16
+perimeter_square(a)
+Функция для вычисления периметра квадрата.
+
+Параметры:
+a (int, float): Длина стороны квадрата.
+Возвращает:
+float: Периметр квадрата.
+Пример использования:
+
+»> perimeter_square(4)
+16
+area_triangle(a, b, c)
+Функция для вычисления площади треугольника по формуле Герона.
+
+Параметры:
+a, b, c (int, float): Длины сторон треугольника.
+Возвращает:
+float: Площадь треугольника.
+Пример использования:
+
+»> area_triangle(3, 4, 5)
+6.0
+perimeter_triangle(a, b, c)
+Функция для вычисления периметра треугольника.
+
+Параметры:
+a, b, c (int, float): Длины сторон треугольника.
+Возвращает:
+float: Периметр треугольника.
+Пример использования:
+
+»> perimeter_triangle(3, 4, 5)
+12
+История изменения проекта с хешами комитов:
+b5b0fae (origin/develop, develop) L-04: Update docs for calculate.py
+d76db2a L-04: Add calculate.py
+51c40eb L-04: Doc updated for triangle
+d080c78 L-04: Triangle added
+d078c8d (origin/main, origin/HEAD, main) L-03: Docs added
+8ba9aeb L-03: Circle and square added —>
