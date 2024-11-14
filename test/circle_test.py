@@ -2,6 +2,7 @@ import unittest
 from circle import area, perimeter
 import math
 
+
 class TestCircle(unittest.TestCase):
     def test_area_positive_radius(self):
         r = 2.4
@@ -20,7 +21,7 @@ class TestCircle(unittest.TestCase):
 
     def test_area_positive_radius(self):
         r = 25
-        expected_area =  math.pi * r * r
+        expected_area = math.pi * r * r
         self.assertAlmostEqual(area(r), expected_area)
 
     def test_perimeter_positive_radius(self):
@@ -44,5 +45,5 @@ class TestCircle(unittest.TestCase):
         self.assertAlmostEqual(perimeter(r), expected_perimetr)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

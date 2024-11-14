@@ -4,7 +4,6 @@ import math
 
 
 class TestTriangle(unittest.TestCase):
-
     def test_area_valid_triangle(self):
         a, b, c = 5, 6, 7
         s = (a + b + c) / 2
@@ -52,5 +51,5 @@ class TestTriangle(unittest.TestCase):
             perimeter(a, b, c)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
