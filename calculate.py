@@ -1,33 +1,41 @@
 import circle
 import square
+import triangle
 
+# Определение доступных фигур и функций
+figs = {
+    "circle": {"module": circle, "params": 1},
+    "square": {"module": square, "params": 1},
+    "triangle": {"module": triangle, "params": 3},
+}
 
-figs = ['circle', 'square']
-funcs = ['perimeter', 'area']
-sizes = {}
+funcs = ["perimeter", "area"]
+
 
 def calc(fig, func, size):
-	assert fig in figs
-	assert func in funcs
+    # Проверка наличия фигуры и функции
+    if fig not in figs:
+        raise ValueError(
+            f"Фигура {fig} недоступна. Доступные фигуры: {list(figs.keys())}"
+        )
+    if func not in funcs:
+        raise ValueError(f"Функция {func} недоступна. Доступные функции: {funcs}")
 
-	result = eval(f'{fig}.{func}(*{size})')
-	print(f'{func} of {fig} is {result}')
+    # Проверка количества параметров
+    num_params = figs[fig]["params"]
+    if len(size) != num_params:
+        raise ValueError(
+            f"Ожидается {num_params} параметров для фигуры {fig}, получено {len(size)}"
+        )
 
-if __name__ == "__main__":
-	func = ''
-	fig = ''
-	size = list()
-    
-	while fig not in figs:
-		fig = input(f"Enter figure name, avaliable are {figs}:\n")
-	
-	while func not in funcs:
-		func = input(f"Enter function name, avaliable are {funcs}:\n")
-	
-	while len(size) != sizes.get(f"{func}-{fig}", 1):
-		size = list(map(int, input("Input figure sizes separated by space, 1 for circle and square\n").split(' ')))
-	
-	calc(fig, func, size)
+    # Проверка, что все размеры положительные
+    if any(s <= 0 for s in size):
+        raise ValueError("Все размеры должны быть положительными целыми числами")
 
+    # Получение нужного модуля и функции
+    module = figs[fig]["module"]
+    func_to_call = getattr(module, func)
 
-
+    # Вычисление результата
+    result = func_to_call(*size)
+    return f"{func.capitalize()} of {fig} with size(s) {size} is {result}"
